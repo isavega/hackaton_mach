@@ -22,7 +22,7 @@ const SignUpContainer = styled.div`
       "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
       "Helvetica Neue", sans-serif;
     color: ${color.white};
-    font-size: 52px;
+    font-size: 32px;
   }
 
   form {
