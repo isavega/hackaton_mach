@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { supabase } from "../api/supabase";
 import styled from "styled-components";
 import { color } from "../styles/color";
-import { rutnum } from "../utils/utils"
+import { rutnum } from "../utils/utils";
 
 const SignUpContainer = styled.div`
   width: 70%;
@@ -119,10 +119,6 @@ const SignUp = () => {
 
   const handleIdDocumentChange = (e) => {
     setIdDocument(formatRut(e.target.value));
-  };
-
-  const generateAccountNumber = (rut) => {
-    return 1;
   };
 
   async function signUpNewUser() {

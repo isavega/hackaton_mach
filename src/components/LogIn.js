@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import { supabase } from "../api/supabase";
 import styled from "styled-components";
 import { color } from "../styles/color";
+import { useSelector, useDispatch } from "react-redux";
+import { login, logout } from "../redux/slice/authSlice";
 
 const LogInContainer = styled.div`
   width: 70%;
@@ -67,6 +69,9 @@ const LogInContainer = styled.div`
 `;
 
 const LogIn = () => {
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -78,6 +83,8 @@ const LogIn = () => {
       email,
       password,
     });
+
+    dispatch(login(data));
 
     console.log("INICIO DE SESIÓN");
     console.log("DATA: ", data);
