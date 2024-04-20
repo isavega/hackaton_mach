@@ -73,32 +73,19 @@ const LogIn = () => {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  const handleGoogleSignIn = async () => {
-    // Lógica de inicio de sesión con Google
-    try {
-      const { user, error } = await supabase.auth.signIn({
-        provider: "google",
-      });
-      if (error) throw error;
-      // Manejar el usuario autenticado
-    } catch (error) {
-      console.error("Error al iniciar sesión con Google:", error.message);
-    }
-  };
+  async function signInUser() {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-  const handleSubmit = async (e) => {
+    console.log("INICIO DE SESIÓN");
+    console.log("DATA: ", data);
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica de inicio de sesión con email y contraseña
-    try {
-      const { user, error } = await supabase.auth.signIn({
-        email,
-        password,
-      });
-      if (error) throw error;
-      // Manejar el usuario autenticado
-    } catch (error) {
-      console.error("Error al iniciar sesión:", error.message);
-    }
+    signInUser();
   };
 
   return (
@@ -120,9 +107,6 @@ const LogIn = () => {
           ref={passwordRef}
         />
         <button type="submit">Iniciar sesión</button>
-        <button type="button" onClick={handleGoogleSignIn}>
-          Iniciar sesión con Google
-        </button>
       </form>
     </LogInContainer>
   );

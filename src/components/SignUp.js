@@ -120,14 +120,24 @@ const SignUp = () => {
     setIdDocument(formatRut(e.target.value));
   };
 
+  const generateAccountNumber = (rut) => {
+    return 1;
+  };
+
   async function signUpNewUser() {
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
-      firstName,
-      lastName,
-      idDocument,
-      phoneNumber,
+      options: {
+        data: {
+          firstName,
+          lastName,
+          idDocument,
+          phoneNumber,
+          balance_clp: 0,
+          account_number: generateAccountNumber(idDocument),
+        },
+      },
     });
 
     console.log("DATA: ", data);
