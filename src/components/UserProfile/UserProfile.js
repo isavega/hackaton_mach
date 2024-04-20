@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import TransactionHistory from "./TransactionHistory";
-import Button from "./Button";
-import WireTransfer from "./WireTransfer";
+import TransactionHistory from "../TransactionHistory";
+import Button from "../Button/Button";
+import WireTransfer from "../WireTransfer";
 
 const Container = styled.div`
   text-align: center;

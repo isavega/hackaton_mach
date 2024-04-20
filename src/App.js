@@ -3,10 +3,10 @@ import logoMach from "./logo-mach-blanco.png";
 import "./App.css";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
-import Button from "./components/Button";
+import Button from "./components/Button/Button";
 import { useSelector } from "react-redux";
 import LogOutButton from "./components/LogOutButton";
-import UserProfile from "./components/UserProfile";
+import UserProfile from "./components/UserProfile/UserProfile";
 import { supabase } from "./api/supabase";
 
 async function updateUserMetadata(userId, auth) {

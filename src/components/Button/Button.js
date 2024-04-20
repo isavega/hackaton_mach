@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { color } from "../styles/color";
+import { color } from "../../styles/color";
 
 const Button = styled.button`
   margin: 0 auto; /* Centrar el botón */

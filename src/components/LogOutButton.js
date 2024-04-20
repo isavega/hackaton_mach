@@ -1,12 +1,12 @@
-import Button from "./Button";
-import { useSelector, useDispatch } from "react-redux";
-import { login, logout } from "../redux/slice/authSlice";
+import Button from "./Button/Button";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/slice/authSlice";
 import { supabase } from "../api/supabase";
 
 const LogoutButton = () => {
   const dispatch = useDispatch();
   async function signOutUser() {
-    const { error } = await supabase.auth.signOut();
+    await supabase.auth.signOut();
 
     dispatch(logout());
   }

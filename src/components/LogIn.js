@@ -2,9 +2,9 @@ import React, { useState, useRef } from "react";
 import { supabase } from "../api/supabase";
 import styled from "styled-components";
 import { color } from "../styles/color";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../redux/slice/authSlice";
-import Button from "./Button";
+import Button from "./Button/Button";
 
 const LogInContainer = styled.div`
   width: 70%;

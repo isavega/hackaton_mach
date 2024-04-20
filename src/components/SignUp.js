@@ -5,7 +5,7 @@ import { color } from "../styles/color";
 import { rutnum } from "../utils/utils";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/slice/authSlice";
-import Button from "./Button.js";
+import Button from "./Button/Button";
 
 const SignUpContainer = styled.div`
   width: 70%;
