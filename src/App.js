@@ -6,6 +6,7 @@ import LogIn from "./components/LogIn";
 import Button from "./components/Button";
 import { useSelector } from "react-redux";
 import LogOutButton from "./components/LogOutButton";
+import UserProfile from "./components/UserProfile";
 
 function App() {
   const [showLogIn, setShowLogIn] = useState(false);
@@ -29,10 +30,22 @@ function App() {
         )}
 
         <p>Bienvenido a Mach!</p>
-        <Button onClick={() => setShowLogIn(!showLogIn)}>
-          {showLogIn ? "Crear cuenta ❤️" : "Iniciar sesión 😇"}
-        </Button>
-        {showLogIn ? <LogIn /> : <SignUp />}
+        {!auth.isAuthenticated && (
+          <Button onClick={() => setShowLogIn(!showLogIn)}>
+            {showLogIn ? "Crear cuenta ❤️" : "Iniciar sesión 😇"}
+          </Button>
+        )}
+        {auth.isAuthenticated ? (
+          <UserProfile
+            name={auth.user.user.user_metadata.firstName}
+            balance={auth.user.user.user_metadata.balance_cl}
+            accountNumber={auth.user.user.user_metadata.account_number}
+          />
+        ) : showLogIn ? (
+          <LogIn />
+        ) : (
+          <SignUp />
+        )}
       </header>
     </div>
   );
