@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { supabase } from "../api/supabase";
 import styled from "styled-components";
 import { color } from "../styles/color";
+import { rutnum } from "../utils/utils"
 
 const SignUpContainer = styled.div`
   width: 70%;
@@ -135,7 +136,7 @@ const SignUp = () => {
           idDocument,
           phoneNumber,
           balance_clp: 0,
-          account_number: generateAccountNumber(idDocument),
+          account_number: rutnum(idDocument),
         },
       },
     });
