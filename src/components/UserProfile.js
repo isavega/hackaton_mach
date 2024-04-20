@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import TransactionHistory from "./TransactionHistory";
 import Button from "./Button";
+import WireTransfer from "./WireTransfer";
 
 const Container = styled.div`
   text-align: center;
@@ -22,6 +23,7 @@ const TextProfile = styled.p`
 
 const UserProfile = ({ name, balance, accountNumber, transferData }) => {
   const [showTransactions, setShowTransactions] = useState(false);
+  const [showWireTransfer, setShowWireTransfer] = useState(false);
 
   return (
     <Container>
@@ -35,7 +37,11 @@ const UserProfile = ({ name, balance, accountNumber, transferData }) => {
       <Button onClick={() => setShowTransactions(!showTransactions)}>
         {showTransactions ? "Ocultar" : "Ver"} Movimientos
       </Button>
+      <Button onClick={() => setShowWireTransfer(!showWireTransfer)}>
+        Transferencia Bancaria
+      </Button>
       {showTransactions && <TransactionHistory />}
+      {showWireTransfer && <WireTransfer balance={balance} />}
     </Container>
   );
 };
