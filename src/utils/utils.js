@@ -72,18 +72,18 @@ function getDV(numero) {
 //let rut = '19.949.268-3';
 
 // Separa el número del RUT y el dígito verificador
-let [cleanRut, dv] = rut.split('-');
+//let [cleanRut, dv] = rut.split('-');
 
 // Elimina caracteres no numéricos del RUT
-cleanRut = cleanRut.replace(/[^\d]/g, '');
+//cleanRut = cleanRut.replace(/[^\d]/g, '');
 
 // Obtiene el último dígito (o 'K') del DV
-let lastDigit = getLastDigit(dv);
+//let lastDigit = getLastDigit(dv);
 
 //console.log("RUT:", cleanRut); // Muestra el RUT limpio
 //console.log("DV:", lastDigit); // Muestra el dígito verificador
 
 // Valida el RUT
-let rutValido = validarRut(cleanRut, lastDigit); // Retorna bool
+//let rutValido = validarRut(cleanRut, lastDigit); // Retorna bool
 //console.log("RUT_VALIDO: ", rutValido); // Muestra si el RUT es válido o no
 
