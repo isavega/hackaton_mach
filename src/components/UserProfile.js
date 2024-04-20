@@ -18,16 +18,23 @@ const QRCodeImage = styled.img`
   margin: 10px;
 `;
 
+const TextProfile = styled.p`
+  font-size: 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+`;
+
 const UserProfile = ({ name, balance, accountNumber, transferData }) => {
   return (
     <Container>
       {/* <AvatarImage src="path/to/generic-avatar.png" alt="Avatar" /> */}
-      <h4>{name}</h4>
+      <TextProfile>{name}</TextProfile>
       <hr />
-      <p>Balance: ${balance} CLP</p>
-      <p>Account Number: {accountNumber}</p>
+      <TextProfile>Balance: ${balance} CLP</TextProfile>
+      <TextProfile>Account Number: {accountNumber}</TextProfile>
       {/* <QRCodeImage src={transferData.qr} alt="QR Code" /> */}
-      <p>Scan this QR code to transfer funds.</p>
+      <TextProfile>Scan this QR code to transfer funds.</TextProfile>
     </Container>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logoMach from "./logo-mach-blanco.png";
 import "./App.css";
 import SignUp from "./components/SignUp";
@@ -7,6 +7,21 @@ import Button from "./components/Button";
 import { useSelector } from "react-redux";
 import LogOutButton from "./components/LogOutButton";
 import UserProfile from "./components/UserProfile";
+import { supabase } from "./api/supabase";
+
+async function updateUserMetadata(userId, auth) {
+  try {
+    await supabase.auth.updateUser({
+      id: userId,
+      user_metadata: {
+        ...auth.user.user.user_metadata,
+        flag_user_innactive: true,
+      },
+    });
+  } catch (error) {
+    console.error("Error updating user metadata:", error.message);
+  }
+}
 
 function App() {
   const [showLogIn, setShowLogIn] = useState(false);
@@ -16,6 +31,22 @@ function App() {
   console.log("AUTH: ", auth);
 
   console.log("USUARIO AUTENTICADO: ", auth.isAuthenticated);
+
+  useEffect(() => {
+    if (auth.isAuthenticated) {
+      const lastSignIn = auth.user.user.last_sign_in_at;
+      if (lastSignIn) {
+        const lastSignInDate = new Date(lastSignIn);
+        const currentDate = new Date();
+        const diff = currentDate - lastSignInDate;
+        const diffInMonths = diff / (1000 * 60 * 60 * 24 * 30);
+        if (diffInMonths > 12) {
+          console.log("Hace más de 12 meses que no inicias sesión");
+          updateUserMetadata(auth.user.user.id, auth);
+        }
+      }
+    }
+  }, [auth]);
 
   return (
     <div className="App">
