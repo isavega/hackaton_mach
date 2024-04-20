@@ -1,21 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import TransactionHistory from "./TransactionHistory";
+import Button from "./Button";
 
 const Container = styled.div`
   text-align: center;
   padding: 20px;
-`;
+  width: 50%;
 
-const AvatarImage = styled.img`
-  width: 100px;
-  height: 100px;
-  margin: auto;
-`;
-
-const QRCodeImage = styled.img`
-  width: 150px;
-  height: 150px;
-  margin: 10px;
+  @media (max-width: 768px) {
+    width: 95%;
+  }
 `;
 
 const TextProfile = styled.p`
@@ -26,6 +21,8 @@ const TextProfile = styled.p`
 `;
 
 const UserProfile = ({ name, balance, accountNumber, transferData }) => {
+  const [showTransactions, setShowTransactions] = useState(false);
+
   return (
     <Container>
       {/* <AvatarImage src="path/to/generic-avatar.png" alt="Avatar" /> */}
@@ -34,7 +31,11 @@ const UserProfile = ({ name, balance, accountNumber, transferData }) => {
       <TextProfile>Balance: ${balance} CLP</TextProfile>
       <TextProfile>Account Number: {accountNumber}</TextProfile>
       {/* <QRCodeImage src={transferData.qr} alt="QR Code" /> */}
-      <TextProfile>Scan this QR code to transfer funds.</TextProfile>
+      {/* <TextProfile>Scan this QR code to transfer funds.</TextProfile> */}
+      <Button onClick={() => setShowTransactions(!showTransactions)}>
+        {showTransactions ? "Ocultar" : "Ver"} Movimientos
+      </Button>
+      {showTransactions && <TransactionHistory />}
     </Container>
   );
 };

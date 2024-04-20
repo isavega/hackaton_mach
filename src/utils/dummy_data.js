@@ -1,0 +1,57 @@
+export const transactions = [
+  {
+    id: 1,
+    type: "Transferencia",
+    amount: -100,
+    sourceOrDestination: "Cuenta de Ahorros",
+  },
+  { id: 2, type: "Depósito", amount: 500, sourceOrDestination: "Nómina" },
+  {
+    id: 3,
+    type: "Transferencia",
+    amount: -75,
+    sourceOrDestination: "Tarjeta de Crédito",
+  },
+  { id: 4, type: "Depósito", amount: 200, sourceOrDestination: "Ventas" },
+  {
+    id: 5,
+    type: "Transferencia",
+    amount: 50,
+    sourceOrDestination: "Cuenta de Ahorros",
+  },
+  {
+    id: 6,
+    type: "Transferencia",
+    amount: -120,
+    sourceOrDestination: "Tarjeta de Crédito",
+  },
+  {
+    id: 7,
+    type: "Transferencia",
+    amount: 80,
+    sourceOrDestination: "Cuenta de Ahorros",
+  },
+  { id: 8, type: "Depósito", amount: 150, sourceOrDestination: "Ventas" },
+  { id: 9, type: "Depósito", amount: 300, sourceOrDestination: "Nómina" },
+  {
+    id: 10,
+    type: "Transferencia",
+    amount: -200,
+    sourceOrDestination: "Tarjeta de Crédito",
+  },
+  { id: 11, type: "Depósito", amount: 400, sourceOrDestination: "Ventas" },
+  {
+    id: 12,
+    type: "Transferencia",
+    amount: 100,
+    sourceOrDestination: "Cuenta de Ahorros",
+  },
+  { id: 13, type: "Depósito", amount: 250, sourceOrDestination: "Nómina" },
+  {
+    id: 14,
+    type: "Transferencia",
+    amount: -150,
+    sourceOrDestination: "Tarjeta de Crédito",
+  },
+  { id: 15, type: "Depósito", amount: 600, sourceOrDestination: "Ventas" },
+];
