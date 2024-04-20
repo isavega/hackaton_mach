@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { color } from "../styles/color";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout } from "../redux/slice/authSlice";
+import Button from "./Button";
 
 const LogInContainer = styled.div`
   width: 70%;
@@ -97,7 +98,7 @@ const LogIn = () => {
 
   return (
     <LogInContainer>
-      <h1>Inicio Sesión</h1>
+      <h1>Iniciar Sesión</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -113,7 +114,7 @@ const LogIn = () => {
           onChange={(e) => setPassword(e.target.value)}
           ref={passwordRef}
         />
-        <button type="submit">Iniciar sesión</button>
+        <Button type="submit">Entrar</Button>
       </form>
     </LogInContainer>
   );

@@ -60,10 +60,10 @@ function App() {
           </>
         )}
 
-        <p>Bienvenido a Mach!</p>
+        <p>¡Bienvenido!</p>
         {!auth.isAuthenticated && (
           <Button onClick={() => setShowLogIn(!showLogIn)}>
-            {showLogIn ? "Crear cuenta ❤️" : "Iniciar sesión 😇"}
+            {showLogIn ? "Crear cuenta ❤️" : "Iniciar sesión"}
           </Button>
         )}
         {auth.isAuthenticated ? (

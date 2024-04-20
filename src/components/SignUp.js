@@ -5,6 +5,7 @@ import { color } from "../styles/color";
 import { rutnum } from "../utils/utils";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout } from "../redux/slice/authSlice";
+import Button from "./Button.js";
 
 const SignUpContainer = styled.div`
   width: 70%;
@@ -169,7 +170,7 @@ const SignUp = () => {
 
   return (
     <SignUpContainer>
-      <h1>Crea una cuenta!</h1>
+      <h1>Hazte Cliente</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -220,7 +221,7 @@ const SignUp = () => {
           ref={passwordRef}
         />
 
-        <button type="submit">Registrarse</button>
+        <Button type="submit">Registrarse</Button>
       </form>
     </SignUpContainer>
   );
