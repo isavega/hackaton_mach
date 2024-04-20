@@ -94,7 +94,7 @@ const LogIn = () => {
 
   return (
     <LogInContainer>
-      <h1>Iniciar Sesión</h1>
+      <h1>Iniciar Sesión 😎</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="email"

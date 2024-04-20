@@ -15,8 +15,8 @@ const WireTransfer = ({ balance }) => {
   const [confetti, setConfetti] = useState(false);
 
   const banks = [
-    "BANCO BCI",
-    "MACH",
+    "BANCO BCI 💙💚❤️ ",
+    "MACH 💜",
     "Banco de Chile",
     "BancoEstado",
     "Banco Santander",

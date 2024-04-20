@@ -25,6 +25,16 @@ const UserProfile = ({ name, balance, accountNumber, transferData }) => {
   const [showTransactions, setShowTransactions] = useState(false);
   const [showWireTransfer, setShowWireTransfer] = useState(false);
 
+  const handleShowTransactions = () => {
+    setShowTransactions(!showTransactions);
+    setShowWireTransfer(false);
+  };
+
+  const handleShowWireTransfer = () => {
+    setShowTransactions(false);
+    setShowWireTransfer(true);
+  };
+
   return (
     <Container>
       <TextProfile>{name}</TextProfile>
@@ -32,12 +42,10 @@ const UserProfile = ({ name, balance, accountNumber, transferData }) => {
       <TextProfile>Balance: ${balance || 1000} CLP</TextProfile>
       <TextProfile>Account Number: {accountNumber}</TextProfile>
 
-      <Button onClick={() => setShowTransactions(!showTransactions)}>
+      <Button onClick={handleShowTransactions}>
         {showTransactions ? "Ocultar" : "Ver"} Movimientos
       </Button>
-      <Button onClick={() => setShowWireTransfer(!showWireTransfer)}>
-        Transferencia Bancaria
-      </Button>
+      <Button onClick={handleShowWireTransfer}>Transferencia Bancaria</Button>
       {showTransactions && <TransactionHistory />}
       {showWireTransfer && <WireTransfer balance={balance} />}
     </Container>
