@@ -27,13 +27,11 @@ const UserProfile = ({ name, balance, accountNumber, transferData }) => {
 
   return (
     <Container>
-      {/* <AvatarImage src="path/to/generic-avatar.png" alt="Avatar" /> */}
       <TextProfile>{name}</TextProfile>
       <hr />
-      <TextProfile>Balance: ${balance} CLP</TextProfile>
+      <TextProfile>Balance: ${balance || 1000} CLP</TextProfile>
       <TextProfile>Account Number: {accountNumber}</TextProfile>
-      {/* <QRCodeImage src={transferData.qr} alt="QR Code" /> */}
-      {/* <TextProfile>Scan this QR code to transfer funds.</TextProfile> */}
+
       <Button onClick={() => setShowTransactions(!showTransactions)}>
         {showTransactions ? "Ocultar" : "Ver"} Movimientos
       </Button>

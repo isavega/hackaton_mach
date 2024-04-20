@@ -3,8 +3,8 @@ import { supabase } from "../api/supabase";
 import styled from "styled-components";
 import { color } from "../styles/color";
 import { rutnum } from "../utils/utils";
-import { useSelector, useDispatch } from "react-redux";
-import { login, logout } from "../redux/slice/authSlice";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/slice/authSlice";
 import Button from "./Button.js";
 
 const SignUpContainer = styled.div`
@@ -127,12 +127,10 @@ const SignUp = () => {
   const dispatch = useDispatch();
 
   async function signUpNewUser() {
-    console.log("ACCOUNT NUMBER: ", rutnum(idDocument));
-
     const accountNumber = rutnum(idDocument);
     const initialBalance = 0;
 
-    const { data, error } = await supabase.auth.signUp({
+    const { data } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -148,8 +146,6 @@ const SignUp = () => {
     });
 
     dispatch(login(data));
-
-    console.log("DATA: ", data);
   }
 
   const handleSubmit = (e) => {

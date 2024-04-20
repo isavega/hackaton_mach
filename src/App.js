@@ -27,10 +27,7 @@ function App() {
   const [showLogIn, setShowLogIn] = useState(false);
 
   const auth = useSelector((state) => state.auth);
-
-  console.log("AUTH: ", auth);
-
-  console.log("USUARIO AUTENTICADO: ", auth.isAuthenticated);
+  const inactiveMonths = 12;
 
   useEffect(() => {
     if (auth.isAuthenticated) {
@@ -40,8 +37,7 @@ function App() {
         const currentDate = new Date();
         const diff = currentDate - lastSignInDate;
         const diffInMonths = diff / (1000 * 60 * 60 * 24 * 30);
-        if (diffInMonths > 12) {
-          console.log("Hace más de 12 meses que no inicias sesión");
+        if (diffInMonths > inactiveMonths) {
           updateUserMetadata(auth.user.user.id, auth);
         }
       }

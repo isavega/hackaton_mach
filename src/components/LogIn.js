@@ -87,9 +87,7 @@ const LogIn = () => {
 
     dispatch(login(data));
 
-    console.log("INICIO DE SESIÓN");
-    console.log("DATA: ", data);
-  }
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
