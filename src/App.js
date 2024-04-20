@@ -1,22 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logoMach from "./logo-mach-blanco.png";
+import "./App.css";
+import SignUp from "./components/SignUp";
+import LogIn from "./components/LogIn";
+import Button from "./components/Button";
 
 function App() {
+  const [showLogIn, setShowLogIn] = useState(false);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src={logoMach} className="App-logo" alt="logo" />
+        <p>Bienvenido a Mach!</p>
+        <Button onClick={() => setShowLogIn(!showLogIn)}>
+          {showLogIn ? "Crear cuenta ❤️" : "Iniciar sesión 😇"}
+        </Button>
+        {showLogIn ? <LogIn /> : <SignUp />}
       </header>
     </div>
   );

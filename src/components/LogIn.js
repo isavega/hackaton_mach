@@ -1,0 +1,131 @@
+import React, { useState, useRef } from "react";
+import { supabase } from "../api/supabase";
+import styled from "styled-components";
+import { color } from "../styles/color";
+
+const LogInContainer = styled.div`
+  width: 70%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: ${color.secondary};
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+    color: ${color.white};
+    font-size: 52px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    input,
+    button {
+      margin: 0 auto; /* Centrar el botón */
+      margin-bottom: 18px; /* Espacio entre los inputs */
+      padding: 12px; /* Aumentar el padding */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 18px; /* Aumentar el tamaño de la letra */
+      width: calc(80% - 24px); /* Ancho de los inputs menos el padding */
+    }
+
+    button {
+      background-color: ${color.primary};
+      color: #fff;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px;
+
+    h1 {
+      margin-bottom: 15px;
+    }
+
+    form {
+      input,
+      button {
+        padding: 10px;
+        font-size: 14px;
+      }
+    }
+  }
+`;
+
+const LogIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
+  const handleGoogleSignIn = async () => {
+    // Lógica de inicio de sesión con Google
+    try {
+      const { user, error } = await supabase.auth.signIn({
+        provider: "google",
+      });
+      if (error) throw error;
+      // Manejar el usuario autenticado
+    } catch (error) {
+      console.error("Error al iniciar sesión con Google:", error.message);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Lógica de inicio de sesión con email y contraseña
+    try {
+      const { user, error } = await supabase.auth.signIn({
+        email,
+        password,
+      });
+      if (error) throw error;
+      // Manejar el usuario autenticado
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error.message);
+    }
+  };
+
+  return (
+    <LogInContainer>
+      <h1>Inicio Sesión</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          placeholder="Correo electrónico"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          ref={emailRef}
+        />
+        <input
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          ref={passwordRef}
+        />
+        <button type="submit">Iniciar sesión</button>
+        <button type="button" onClick={handleGoogleSignIn}>
+          Iniciar sesión con Google
+        </button>
+      </form>
+    </LogInContainer>
+  );
+};
+
+export default LogIn;
