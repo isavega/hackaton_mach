@@ -3,7 +3,7 @@ import { supabase } from "../api/supabase";
 import styled from "styled-components";
 import { color } from "../styles/color";
 import { useSelector, useDispatch } from "react-redux";
-import { login, logout } from "../redux/slice/authSlice";
+import { login } from "../redux/slice/authSlice";
 import Button from "./Button";
 
 const LogInContainer = styled.div`
@@ -70,7 +70,6 @@ const LogInContainer = styled.div`
 `;
 
 const LogIn = () => {
-  const { isAuthenticated, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
@@ -80,14 +79,13 @@ const LogIn = () => {
   const passwordRef = useRef(null);
 
   async function signInUser() {
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { data } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
     dispatch(login(data));
-
-
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
